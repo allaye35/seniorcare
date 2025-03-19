@@ -1,0 +1,47 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for SeniorCare project",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:dev": "ts-node-dev --respawn src/index.ts",
+    "start2": "npm start",
+    "migrate": "typeorm migration:run -d dist/config/database.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:debug": "node --inspect=0.0.0.0:9229 dist/index.js"
+  },
+  "keywords": [
+    "backend",
+    "seniorcare",
+    "typescript",
+    "node"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.10.6",
+    "@types/nodemailer": "^6.4.17",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "class-validator": "^0.14.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.16",
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.20",
+    "winston": "^3.17.0"
+  }
+}

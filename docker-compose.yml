@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: seniorcare
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  backend:
+    build: ./backend
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: password
+      DB_NAME: seniorcare
+      DATABASE_URL: postgres://postgres:password@postgres:5432/seniorcare
+    depends_on:
+      - postgres
+    ports:
+      - "4000:4000"
+    command: >
+      sh -c "
+      echo 'Running migrations...' &&
+      npm run migrate &&
+      echo 'Starting application...' &&
+      npm start
+      "
+
+volumes:
+  postgres_data:
